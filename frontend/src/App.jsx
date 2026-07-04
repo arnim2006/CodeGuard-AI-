@@ -22,7 +22,7 @@ function App() {
   }, [])
 
   async function reviewCode() {
-    const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiBaseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace(/\/+$/, '');
     const response = await axios.post(`${apiBaseUrl}/ai/get-review`, { code });
     setReview(response.data);
   }
